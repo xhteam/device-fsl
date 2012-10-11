@@ -219,6 +219,7 @@ omx_libs :=						\
 	lib_wb_amr_enc_arm11_elinux			\
 	lib_omx_vpu_enc_v2_arm11_elinux			\
 	lib_ffmpeg_arm11_elinux				\
+	lib_amr_parser_arm11_elinux.3.0 \
 
 # Omx excluded libs
 omx_excluded_libs :=					\
