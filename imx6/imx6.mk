@@ -245,6 +245,11 @@ PRODUCT_PACKAGES += \
 	libext2_uuid	\
 	libext2fs
 
+# ril related libs
+PRODUCT_PACKAGES += \
+	libreference-ril-zte.so \
+	libruntime-ril-port
+
 PRODUCT_LOCALES += hdpi mdpi
 
 PRODUCT_COPY_FILES +=	\
