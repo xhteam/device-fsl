@@ -33,3 +33,6 @@ PRODUCT_MAKEFILES := \
   $(LOCAL_DIR)/sabreauto_6q.mk \
   $(LOCAL_DIR)/sabresd_6dq.mk \
   $(LOCAL_DIR)/hdmidongle_6dq.mk \
+  $(LOCAL_DIR)/sparkauto_6dq.mk \
+  $(LOCAL_DIR)/qpad_6dq.mk \
+  
