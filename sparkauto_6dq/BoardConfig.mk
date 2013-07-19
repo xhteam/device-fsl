@@ -11,7 +11,7 @@ BUILD_TARGET_FS ?= ext4
 include device/fsl/imx6/imx6_target_fs.mk
 
 
-TARGET_BOOTLOADER_BOARD_NAME := SPARKAUTO
+TARGET_BOOTLOADER_BOARD_NAME := sparkauto
 PRODUCT_MODEL := SPARKAUTO-MX6DQ
 
 # Wifi
@@ -50,8 +50,9 @@ WIFI_TEST_INTERFACE			 := "sta"
 BOARD_MODEM_VENDOR := AMAZON
 
 BOARD_HAVE_HARDWARE_GPS := true
-USE_ATHR_GPS_HARDWARE := true
+USE_ATHR_GPS_HARDWARE := false
 USE_QEMU_GPS_HARDWARE := false
+USE_NMEA_GPS_HARDWARE := true
 
 #for accelerator sensor, need to define sensor type here
 BOARD_HAS_SENSOR := true
