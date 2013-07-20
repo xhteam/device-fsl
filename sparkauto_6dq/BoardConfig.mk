@@ -47,6 +47,10 @@ BOARD_WPA_SUPPLICANT_DRIVER      	 := NL80211
 BOARD_HOSTAPD_DRIVER             	 := NL80211
 WIFI_TEST_INTERFACE			 := "sta"
 
+
+
+BOARD_USES_ALSA_AUDIO := false
+
 BOARD_MODEM_VENDOR := AMAZON
 
 BOARD_HAVE_HARDWARE_GPS := true
@@ -80,7 +84,7 @@ $(error "TARGET_USERIMAGES_USE_UBIFS and TARGET_USERIMAGES_USE_EXT4 config open 
 endif
 endif
 
-BOARD_KERNEL_CMDLINE := console=ttymxc0,115200 init=/init video=mxcfb0:dev=ldb,bpp=32 video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale
+BOARD_KERNEL_CMDLINE := console=ttymxc0,115200 init=/init video=mxcfb0:dev=ldb,bpp=32 video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale enable_wait_mode=off
 
 ifeq ($(TARGET_USERIMAGES_USE_UBIFS),true)
 #UBI boot command line.
