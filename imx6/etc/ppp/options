@@ -1,0 +1,14 @@
+novj 
+novjccomp 
+noauth
+nodetach
+noccp
+ipcp-max-failure 30
+connect "/data/ppp/pppondialer"
+ipcp-accept-local
+ipcp-accept-remote
+defaultroute
+usepeerdns
+debug
+debug
+dump

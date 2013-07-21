@@ -12,7 +12,6 @@ PRODUCT_COPY_FILES += \
 	device/fsl/sparkauto_6dq/required_hardware.xml:system/etc/permissions/required_hardware.xml \
 	device/fsl/sparkauto_6dq/init.rc:root/init.freescale.rc \
 	device/fsl/sparkauto_6dq/vold.fstab:system/etc/vold.fstab \
-	device/fsl/sparkauto_6dq/gpsreset.sh:system/etc/gpsreset.sh \
 	device/fsl/sparkauto_6dq/audio_policy.conf:system/etc/audio_policy.conf \
 	device/fsl/sparkauto_6dq/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
@@ -21,6 +20,7 @@ PRODUCT_COPY_FILES += \
 DEVICE_PACKAGE_OVERLAYS := device/fsl/sparkauto_6dq/overlay
 
 PRODUCT_CHARACTERISTICS := tablet
+#tablet
 
 PRODUCT_AAPT_CONFIG += xlarge large tvdpi hdpi
 
@@ -42,3 +42,16 @@ ifneq ($(wildcard packages/wallpapers/LivePicker),)
 PRODUCT_COPY_FILES += \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 endif
+
+
+#RIL library related
+PRODUCT_COPY_FILES += \
+	device/fsl/imx6/etc/ppp/options:system/etc/ppp/options \
+	device/fsl/imx6/etc/ppp/ip-up-ppp0:system/etc/ppp/ip-up-ppp0 \
+	device/fsl/imx6/etc/ppp/ip-down-ppp0:system/etc/ppp/ip-down-ppp0 \
+	device/fsl/imx6/etc/init.modem.sh:system/etc/init.modem.sh \
+	device/fsl/imx6/etc/init.pppd.sh:system/etc/init.pppd.sh
+	
+	
+
+

@@ -651,6 +651,12 @@ service pppd_gprs /etc/ppp/init.gprs-pppd
     disabled
     oneshot
 
+service ppp_daemon /system/bin/init.pppd.sh
+    user root
+    group radio cache inet misc
+    disabled
+    oneshot    
+
 service wifi_mac /system/bin/sh /system/etc/check_wifi_mac.sh
     class late_start
     oneshot
