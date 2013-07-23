@@ -6,15 +6,12 @@ include device/fsl/imx6/soc/imx6dq.mk
 include device/fsl/sparkauto_6dq/build_id.mk
 include device/fsl/imx6/BoardConfigCommon.mk
 include device/fsl-proprietary/gpu-viv/fsl-gpu.mk
-include device/fsl/sparkauto_6dq/vendor.mk
 # sparkauto_6dq default target for EXT4
 BUILD_TARGET_FS ?= ext4
 include device/fsl/imx6/imx6_target_fs.mk
 
-WIFI_BAND := 802_11_BG
-include hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk
-
 PREBUILT_3G_MODEM_RIL			:= true
+
 TARGET_BOOTLOADER_BOARD_NAME := sparkauto
 PRODUCT_MODEL := SPARKAUTO-MX6DQ
 
@@ -30,6 +27,9 @@ WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P := "/vendor/firmware/fw_bcmdhd_p2p.bin"
+TARGET_KERNEL_MODULES := \
+    kernel_imx/drivers/net/wireless/bcmdhd/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
+    kernel_imx/net/wireless/cfg80211.ko:system/lib/modules/cfg80211.ko
 
 
 #BT FIXME

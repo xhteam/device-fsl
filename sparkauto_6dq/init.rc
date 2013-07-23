@@ -135,3 +135,6 @@ service modem_rt /system/etc/init.modem.sh
 on fs
 # mount ext4 partitions
     mount_all /fstab.freescale
+    insmod /system/lib/modules/cfg80211.ko
+    insmod /system/lib/modules/bcmdhd.ko "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/vendor/firmware/bcmdhd.cal iface_name=wlan0"
+    

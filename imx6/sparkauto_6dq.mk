@@ -52,6 +52,16 @@ PRODUCT_COPY_FILES += \
 	device/fsl/imx6/etc/init.modem.sh:system/etc/init.modem.sh \
 	device/fsl/imx6/etc/init.pppd.sh:system/etc/init.pppd.sh
 	
+
+WIFI_BAND := 802_11_BG
+include hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk
+
+#WIFI nvram FIXME?????
+PRODUCT_COPY_FILES += \
+	device/fsl/sparkauto_6dq/bcmdhd.cal:system/vendor/firmware/bcmdhd.cal 
+
+
+$(call inherit-product-if-exists, device/fsl/sparkauto_6dq/vendor.mk)
 	
 
 
