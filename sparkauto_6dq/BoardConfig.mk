@@ -2,6 +2,8 @@
 # Product-specific compile-time definitions.
 #
 
+TARGET_BOARD_INFO_FILE := device/fsl/sparkauto_6dq/board-info.txt
+
 include device/fsl/imx6/soc/imx6dq.mk
 include device/fsl/sparkauto_6dq/build_id.mk
 include device/fsl/imx6/BoardConfigCommon.mk
@@ -15,7 +17,16 @@ PREBUILT_3G_MODEM_RIL			:= true
 TARGET_BOOTLOADER_BOARD_NAME := sparkauto
 PRODUCT_MODEL := SPARKAUTO-MX6DQ
 
+# Bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/fsl/sparkauto_6dq/bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
 
+
+
+TARGET_KERNEL_MODULES := \
+    kernel_imx/drivers/net/wireless/bcmdhd/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
+    kernel_imx/net/wireless/cfg80211.ko:system/lib/modules/cfg80211.ko
 
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION := VER_0_8_X
@@ -24,18 +35,16 @@ BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_WLAN_DEVICE := bcmdhd
 WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
+#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
 WIFI_DRIVER_FW_PATH_STA := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_AP := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 WIFI_DRIVER_FW_PATH_P2P := "/vendor/firmware/fw_bcmdhd_p2p.bin"
-TARGET_KERNEL_MODULES := \
-    kernel_imx/drivers/net/wireless/bcmdhd/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
-    kernel_imx/net/wireless/cfg80211.ko:system/lib/modules/cfg80211.ko
+#WIFI_DRIVER_MODULE_ARG    := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/vendor/firmware/bcmdhd.cal iface_name=wlan0"
+WIFI_BAND := 802_11_ABG
 
 
-#BT FIXME
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/fsl/sparkauto_6dq/bluetooth
 
-BOARD_USES_ALSA_AUDIO := false
+BOARD_USES_ALSA_AUDIO := true
 
 BOARD_MODEM_VENDOR := AMAZON
 
