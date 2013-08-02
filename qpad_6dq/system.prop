@@ -1,0 +1,10 @@
+rild.libpath=/system/lib/libqst_ril.so
+ro.gps.port=/dev/gpsdevice
+
+# Time between scans in seconds. Keep it high to minimize battery drain.
+# This only affects the case in which there are remembered access points,
+# but none are in range.
+wifi.supplicant_scan_interval=180
+wifi.interface=wlan0
+wifi.softap.interface=wlan0
+

@@ -20,10 +20,11 @@ PRODUCT_COPY_FILES += \
 
 DEVICE_PACKAGE_OVERLAYS := device/fsl/qpad_6dq/overlay
 
-PRODUCT_CHARACTERISTICS := tablet
+PRODUCT_CHARACTERISTICS := phone
 
-PRODUCT_AAPT_CONFIG += xlarge large tvdpi hdpi
+PRODUCT_AAPT_CONFIG += xlarge large tvdpi hdpi mdpi
 
+#hardware permission
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -32,13 +33,18 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
 	frameworks/native/data/etc/android.hardware.faketouch.xml:system/etc/permissions/android.hardware.faketouch.xml \
 	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
-# for PDK build, include only when the dir exists
-# too early to use $(TARGET_BUILD_PDK)
-ifneq ($(wildcard packages/wallpapers/LivePicker),)
+#software permission
 PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
-endif
+#RIL library related
+PRODUCT_COPY_FILES += \
+	device/fsl/imx6/etc/ppp/options:system/etc/ppp/options \
+	device/fsl/imx6/etc/ppp/ip-up-ppp0:system/etc/ppp/ip-up-ppp0 \
+	device/fsl/imx6/etc/ppp/ip-down-ppp0:system/etc/ppp/ip-down-ppp0 \
+	device/fsl/imx6/etc/init.modem.sh:system/etc/init.modem.sh \
+	device/fsl/imx6/etc/init.pppd.sh:system/etc/init.pppd.sh
+$(call inherit-product-if-exists, device/fsl/qpad_6dq/vendor.mk)
