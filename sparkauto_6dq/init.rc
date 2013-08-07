@@ -113,6 +113,10 @@ on boot
 	chown bluetooth bluetooth /dev/ttymxc1
 	chmod 0660 /dev/ttymxc1
 
+	#for pcscd
+	mkdir /data/system/pcsc
+	chown system system /data/system/pcsc
+
 # mount the debugfs
     mount debugfs none /sys/kernel/debug/
 
@@ -189,6 +193,12 @@ service modem_rt /system/etc/init.modem.sh
 	user root	
 	group root radio
 	oneshot
+
+service pcscd /system/bin/pcscd --foreground
+    class main
+	user root	
+	group root system
+
 
 on fs
 # mount ext4 partitions

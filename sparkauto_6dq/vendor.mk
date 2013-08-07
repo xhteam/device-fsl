@@ -8,4 +8,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	gps.freescale
 
+#pcscd ,libusb will install with LOCAL_REQUIRED_MODULES instruction
+PRODUCT_PACKAGES += \
+	libccidtwin \
+	libccid \
+	Info.plist \
+	libpcsclite \
+	pcscd \
+	reader.conf
+
 
