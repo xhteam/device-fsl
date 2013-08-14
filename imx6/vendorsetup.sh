@@ -14,5 +14,6 @@ add_lunch_combo hdmidongle_6dq-user
 add_lunch_combo sparkauto_6dq-eng
 add_lunch_combo sparkauto_6dq-user
 add_lunch_combo qpad_6dq-eng
+add_lunch_combo qpad_6dq-userdebug
 add_lunch_combo qpad_6dq-user
 

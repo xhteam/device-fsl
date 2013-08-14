@@ -47,4 +47,6 @@ PRODUCT_COPY_FILES += \
 	device/fsl/imx6/etc/ppp/ip-down-ppp0:system/etc/ppp/ip-down-ppp0 \
 	device/fsl/imx6/etc/init.modem.sh:system/etc/init.modem.sh \
 	device/fsl/imx6/etc/init.pppd.sh:system/etc/init.pppd.sh
+	
 $(call inherit-product-if-exists, device/fsl/qpad_6dq/vendor.mk)
+
