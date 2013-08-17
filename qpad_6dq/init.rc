@@ -22,12 +22,14 @@ on boot
     # Set permission for IIM node
     symlink /dev/mxs_viim /dev/mxc_mem
 
-    #gps power gpio64,gpio82 as pps
+    #gps power gpio64,gpio82 as pps,set ro.gps.power 
     symlink /dev/ttymxc2 /dev/gpsdevice
     write /sys/class/gpio/export 64
     write /sys/class/gpio/gpio64/direction "out"
-    write /sys/class/gpio/gpio64/value 1
+    write /sys/class/gpio/gpio64/value 0
     write /sys/class/gpio/export 82
+    setprop ro.gps.power /sys/class/gpio/gpio64/value
+
 
     #QR Engine reset:gpio72,trig:gpio94
     write /sys/class/gpio/export 72
