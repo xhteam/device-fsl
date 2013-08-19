@@ -16,3 +16,6 @@ PRODUCT_PACKAGES += \
 	libpn544_fw \
 	nfc.freescale
 
+
+PRODUCT_COPY_FILES += \
+	device/fsl/qpad_6dq/gps.conf:system/etc/gps.conf
