@@ -12,7 +12,6 @@ PRODUCT_COPY_FILES += \
 	device/fsl/qpad_6dq/required_hardware.xml:system/etc/permissions/required_hardware.xml \
 	device/fsl/qpad_6dq/init.rc:root/init.freescale.rc \
 	device/fsl/qpad_6dq/vold.fstab:system/etc/vold.fstab \
-	device/fsl/qpad_6dq/gpsreset.sh:system/etc/gpsreset.sh \
 	device/fsl/qpad_6dq/audio_policy.conf:system/etc/audio_policy.conf \
 	device/fsl/qpad_6dq/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
