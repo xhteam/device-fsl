@@ -188,3 +188,5 @@ service modem_rt /system/etc/init.modem.sh
 on fs
 # mount ext4 partitions
     mount_all /fstab.freescale
+    insmod /system/lib/modules/cfg80211.ko
+

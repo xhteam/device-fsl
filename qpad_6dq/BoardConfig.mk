@@ -19,30 +19,32 @@ PRODUCT_MODEL := QPAD-MX6DQ
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/fsl/qpad_6dq/bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_BLUETOOTH := false
 
 
-
+#WiFi
 TARGET_KERNEL_MODULES := \
-    kernel_imx/drivers/net/wireless/bcmdhd/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
     kernel_imx/net/wireless/cfg80211.ko:system/lib/modules/cfg80211.ko
-
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_mrvl8787
 BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_WLAN_DEVICE := bcmdhd
-WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-#WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/bcmdhd.ko"
-WIFI_DRIVER_FW_PATH_STA := "/vendor/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP := "/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P := "/vendor/firmware/fw_bcmdhd_p2p.bin"
-#WIFI_DRIVER_MODULE_ARG    := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/vendor/firmware/bcmdhd.cal iface_name=wlan0"
-WIFI_BAND := 802_11_ABG
+BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_mrvl8787
+BOARD_WLAN_DEVICE := mrvl8787
+BOARD_WLAN_VENDOR := MRVL
+WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/mrvl/sd8xxx.ko"
+WIFI_DRIVER_MODULE_NAME	:= "sd8xxx"
+WIFI_DRIVER_MODULE_ARG  := "drv_mode=5 cfg80211_wext=0xc sta_name=wlan uap_name=softap wfd_name=p2p max_uap_bss=1"
+WIFI_DRIVER_FW_PATH_PARAM := "/proc/mwlan/config"
+WIFI_DRIVER_FW_PATH_STA := "drv_mode=5"
+WIFI_DRIVER_FW_PATH_AP :=  "drv_mode=6"
+WIFI_DRIVER_FW_PATH_P2P := "drv_mode=5"
 
-BOARD_MODEM_VENDOR := AMAZON
+
+WIFI_SDIO_IF_DRIVER_MODULE_PATH  := "/system/lib/modules/mrvl/mlan.ko"
+WIFI_SDIO_IF_DRIVER_MODULE_NAME  := "mlan"
+WIFI_SDIO_IF_DRIVER_MODULE_ARG   := ""
+
 
 BOARD_HAVE_HARDWARE_GPS := true
 USE_NMEA_GPS_HARDWARE := true
