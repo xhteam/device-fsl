@@ -213,16 +213,12 @@ on post-fs-data
     mkdir /data/misc/sms 0770 system radio
     mkdir /data/misc/vpn 0770 system vpn
     mkdir /data/misc/systemkeys 0700 system system
+
+	# Use android private socket
     # give system access to wpa_supplicant.conf for backup and restore
-    mkdir /data/misc/wifi 0770 wifi system
-    chmod 0770 /data/misc/wifi
+    mkdir /data/misc/wifi 0770 wifi wifi
     chmod 0660 /data/misc/wifi/wpa_supplicant.conf
-    chmod 0775 /data/misc/wifi/ipconfig.txt
-    chmod 0775 /system/etc/dhcpcd/dhcpcd-run-hooks
-    mkdir /system/etc/wifi 0770 wifi wifi 
-	chmod 0770 /system/etc/wifi 
-	chmod 0660 /system/etc/wifi/wpa_supplicant.conf 
-	chown wifi wifi /system/etc/wifi/wpa_supplicant.conf 
+
     mkdir /data/local 0751 root root
 
     # For security reasons, /data/local/tmp should always be empty.
@@ -238,8 +234,6 @@ on post-fs-data
     mkdir /data/ssh 0750 root shell
     mkdir /data/ssh/empty 0700 root root
     mkdir /data/system 0775 system system
-#    mkdir /data/system/wpa_supplicant 0771 wifi wifi
-#    chmod 0771 /data/system/wpa_supplicant
 
     # create dalvik-cache, so as to enforce our permissions
     mkdir /data/dalvik-cache 0771 system system
@@ -383,10 +377,6 @@ on boot
 # Enable USB host1'remote wakeup event wakeup android system
     write /sys/bus/platform/drivers/fsl-ehci/fsl-ehci.1/power/wakeup disabled
 
-# serial no, vendor id,etc configure
-    write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
-    write /sys/class/android_usb/android0/iProduct $ro.product.model
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
 
 # Prepare for RIL
     setprop gsm.ril.delay 15
