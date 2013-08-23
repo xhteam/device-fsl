@@ -34,7 +34,7 @@ BOARD_WLAN_DEVICE := mrvl8787
 BOARD_WLAN_VENDOR := MRVL
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/mrvl/sd8xxx.ko"
 WIFI_DRIVER_MODULE_NAME	:= "sd8xxx"
-WIFI_DRIVER_MODULE_ARG  := "drv_mode=5 cfg80211_wext=0xc sta_name=wlan uap_name=softap wfd_name=p2p max_uap_bss=1"
+WIFI_DRIVER_MODULE_ARG  := "drv_mode=5 cfg80211_wext=0xc sta_name=wlan uap_name=wlan wfd_name=p2p max_uap_bss=1"
 WIFI_DRIVER_FW_PATH_PARAM := "/proc/mwlan/config"
 WIFI_DRIVER_FW_PATH_STA := "drv_mode=5"
 WIFI_DRIVER_FW_PATH_AP :=  "drv_mode=6"

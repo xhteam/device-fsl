@@ -1,5 +1,8 @@
 import init.${ro.hardware}.usb.rc
 
+on early-init
+    mount debugfs none /sys/kernel/debug/
+
 on init
     start watchdogd
 
@@ -16,6 +19,21 @@ on init
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+
+on fs
+	# mount ext4 partitions
+    mount_all /fstab.freescale
+
+
+on post-fs    
+    insmod /system/lib/modules/cfg80211.ko
+
+on post-fs-data
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+
 
 on boot
 
@@ -108,8 +126,10 @@ on boot
     # No bluetooth hardware present
     setprop wlan.interface wlan0
 
-# mount the debugfs
-    mount debugfs none /sys/kernel/debug/
+    #for pcscd
+    mkdir /data/system/pcsc
+    chown system system /data/system/pcsc
+
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -N \
@@ -185,8 +205,10 @@ service modem_rt /system/etc/init.modem.sh
 	group root radio
 	oneshot
 
-on fs
-# mount ext4 partitions
-    mount_all /fstab.freescale
-    insmod /system/lib/modules/cfg80211.ko
+service pcscd /system/bin/pcscd --foreground
+    class main
+	user root	
+	group root system
 
+
+    
