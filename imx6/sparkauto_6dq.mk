@@ -32,7 +32,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
 	frameworks/native/data/etc/android.hardware.faketouch.xml:system/etc/permissions/android.hardware.faketouch.xml \
 	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
 
@@ -40,6 +39,7 @@ PRODUCT_COPY_FILES += \
 # too early to use $(TARGET_BUILD_PDK)
 ifneq ($(wildcard packages/wallpapers/LivePicker),)
 PRODUCT_COPY_FILES += \
+	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 endif
 
@@ -57,7 +57,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/fsl/sparkauto_6dq/bcmdhd.cal:system/vendor/firmware/bcmdhd.cal \
 	device/fsl/sparkauto_6dq/bcm4330.hcd:system/vendor/firmware/bcm4330.hcd \
-	device/fsl/sparkauto_6dq/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+	device/fsl/sparkauto_6dq/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf \
+	device/fsl/sparkauto_6dq/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
 	
 
 

@@ -1,5 +1,8 @@
 import init.${ro.hardware}.usb.rc
 
+on early-init
+    mount debugfs none /sys/kernel/debug/
+
 on init
     start watchdogd
 
@@ -16,6 +19,22 @@ on init
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+
+on fs
+	# mount ext4 partitions
+    mount_all /fstab.freescale
+
+
+on post-fs    
+    insmod /system/lib/modules/cfg80211.ko
+#    insmod /system/lib/modules/bcmdhd.ko "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/vendor/firmware/bcmdhd.cal iface_name=wlan0"
+
+on post-fs-data
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+
 
 on boot
 
@@ -117,8 +136,6 @@ on boot
 	mkdir /data/system/pcsc
 	chown system system /data/system/pcsc
 
-# mount the debugfs
-    mount debugfs none /sys/kernel/debug/
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -N \
@@ -200,9 +217,4 @@ service pcscd /system/bin/pcscd --foreground
 	group root system
 
 
-on fs
-# mount ext4 partitions
-    mount_all /fstab.freescale
-    insmod /system/lib/modules/cfg80211.ko
-    insmod /system/lib/modules/bcmdhd.ko "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/vendor/firmware/bcmdhd.cal iface_name=wlan0"
     
