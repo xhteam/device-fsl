@@ -29,7 +29,7 @@ PRODUCT_PACKAGES += \
 	pcscd \
 	reader.conf
 
-#WiFi
+#Wireless
 PRODUCT_PACKAGES += \
 	mlan.ko \
 	bt8xxx.ko \
@@ -38,4 +38,10 @@ PRODUCT_PACKAGES += \
 	mlanevent \
 	mlanutl \
 	uaputl \
-	wifidirectutl
+	wifidirectutl \
+	MarvellWirelessDaemon \
+	libMarvellWireless \
+	libbt-vendor
+	
+
+

@@ -34,6 +34,8 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
+    #for marvell wireless daemon
+	mkdir /data/system/wireless 0777 system system
 
 on boot
 
@@ -161,6 +163,11 @@ service magd /system/bin/magd
     user system
     group input
     oneshot
+
+service mwirelessd /system/bin/MarvellWirelessDaemon
+    user root
+    group root system wifi bluetooth inet net_bt net_bt_admin
+	class main
 
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL -f/system/etc/dhcpcd/dhcpcd.conf
