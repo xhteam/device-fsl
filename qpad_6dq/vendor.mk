@@ -43,5 +43,9 @@ PRODUCT_PACKAGES += \
 	libMarvellWireless \
 	libbt-vendor
 	
+#sensors
+PRODUCT_PACKAGES += \
+	magd \
+	sensors.imx6
 
 

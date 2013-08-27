@@ -52,7 +52,7 @@ BOARD_HAVE_HARDWARE_GPS := true
 USE_NMEA_GPS_HARDWARE := true
 
 #for accelerator sensor, need to define sensor type here
-BOARD_HAS_SENSOR := true
+BOARD_HAS_IMX_SENSOR := true
 
 # for recovery service
 TARGET_SELECT_KEY := 28

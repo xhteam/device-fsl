@@ -160,8 +160,8 @@ service wpa_supplicant /system/bin/wpa_supplicant \
 # magd daemon
 service magd /system/bin/magd
     class main
-    user system
-    group input
+    user root
+    group root system input
     oneshot
 
 service mwirelessd /system/bin/MarvellWirelessDaemon
