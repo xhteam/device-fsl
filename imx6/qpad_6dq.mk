@@ -37,8 +37,15 @@ PRODUCT_COPY_FILES += \
 
 #software permission
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml 
+
+# for PDK build, include only when the dir exists
+# too early to use $(TARGET_BUILD_PDK)
+ifneq ($(wildcard packages/wallpapers/LivePicker),)
+PRODUCT_PACKAGES += \
+	android.software.live_wallpaper.xml
+endif
+
 #RIL library related
 PRODUCT_COPY_FILES += \
 	device/fsl/imx6/etc/ppp/options:system/etc/ppp/options \
@@ -47,8 +54,9 @@ PRODUCT_COPY_FILES += \
 	device/fsl/imx6/etc/init.modem.sh:system/etc/init.modem.sh \
 	device/fsl/imx6/etc/init.pppd.sh:system/etc/init.pppd.sh
 	
-#WIFI nvram FIXME?????
+#WIFI 
 PRODUCT_COPY_FILES += \
 	device/fsl/sparkauto_6dq/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
 $(call inherit-product-if-exists, device/fsl/qpad_6dq/vendor.mk)
 
