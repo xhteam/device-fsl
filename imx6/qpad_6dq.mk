@@ -4,6 +4,13 @@
 $(call inherit-product, device/fsl/imx6/imx6.mk)
 $(call inherit-product-if-exists,vendor/google/products/gms.mk)
 
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.product.locale.language=zh_CN \
+	ro.product.locale.region=zh_CN \
+	persist.sys.language=zh \
+	persist.sys.country=CN \
+	persist.sys.timezone=Asia/Shanghai
+
 # Overrides
 PRODUCT_NAME := qpad_6dq
 PRODUCT_DEVICE := qpad_6dq
