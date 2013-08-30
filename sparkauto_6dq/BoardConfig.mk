@@ -42,18 +42,13 @@ WIFI_DRIVER_FW_PATH_P2P := "/vendor/firmware/fw_bcmdhd_p2p.bin"
 #WIFI_DRIVER_MODULE_ARG    := "firmware_path=/system/vendor/firmware/fw_bcmdhd.bin nvram_path=/system/vendor/firmware/bcmdhd.cal iface_name=wlan0"
 WIFI_BAND := 802_11_ABG
 
-
-
-BOARD_USES_ALSA_AUDIO := true
+BOARD_USES_ALSA_AUDIO := false
 
 BOARD_MODEM_VENDOR := AMAZON
 
 BOARD_HAVE_HARDWARE_GPS := true
 USE_NMEA_GPS_HARDWARE := true
 
-#for accelerator sensor, need to define sensor type here
-BOARD_HAS_SENSOR := true
-SENSOR_MMA8451 := true
 
 # for recovery service
 TARGET_SELECT_KEY := 28
@@ -79,5 +74,8 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 #
 TARGET_BOOTLOADER_CONFIG := 6q:mx6q_sparkauto_android_config 
 TARGET_KERNEL_DEFCONF := imx6_sparkauto_android_defconfig
+
+#override device key with my own key
+PRODUCT_DEFAULT_DEV_CERTIFICATE := device/fsl/sparkauto_6dq/security/releasekey
 
 
