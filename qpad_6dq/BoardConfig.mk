@@ -79,4 +79,6 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_BOOTLOADER_CONFIG := 6q:mx6q_qpad_android_config 
 TARGET_KERNEL_DEFCONF := imx6_qpad_android_defconfig
 
+#override device key with my own key
+PRODUCT_DEFAULT_DEV_CERTIFICATE := device/fsl/qpad_6dq/security/releasekey
 
