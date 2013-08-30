@@ -7,4 +7,6 @@ ro.gps.port=/dev/gpsdevice
 wifi.supplicant_scan_interval=180
 wifi.interface=wlan0
 wifi.softap.interface=wlan0
-
+ro.barcode.port=/dev/ttymxc4
+ro.infrared.port=/dev/ttymxc3
+ro.gps.port=/dev/ttymxc2
