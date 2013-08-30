@@ -63,7 +63,7 @@ PRODUCT_COPY_FILES += \
 	
 #WIFI 
 PRODUCT_COPY_FILES += \
-	device/fsl/sparkauto_6dq/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+	device/fsl/qpad_6dq/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 $(call inherit-product-if-exists, device/fsl/qpad_6dq/vendor.mk)
 
