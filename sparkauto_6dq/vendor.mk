@@ -17,4 +17,9 @@ PRODUCT_PACKAGES += \
 	pcscd \
 	reader.conf
 
+#Charger
+PRODUCT_PACKAGES += \
+	charger \
+	charger_res_images
+
 
