@@ -2,7 +2,7 @@
 # Product-specific compile-time definitions.
 #
 
-TARGET_BOARD_INFO_FILE := device/fsl/sparkauto_6dq/board-info.txt
+TARGET_BOARD_INFO_FILE := device/fsl/qpad_6dq/board-info.txt
 
 include device/fsl/imx6/soc/imx6dq.mk
 include device/fsl/qpad_6dq/build_id.mk

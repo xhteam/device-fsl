@@ -8,17 +8,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	gps.freescale
 	
+PRODUCT_COPY_FILES += \
+	device/fsl/qpad_6dq/gps.conf:system/etc/gps.conf
+
 #NFC
 PRODUCT_PACKAGES += \
 	libnfc_ndef \
 	libnfc \
+	libnfc_jni \
 	Nfc \
 	libpn544_fw \
 	nfc.freescale
 
 
-PRODUCT_COPY_FILES += \
-	device/fsl/qpad_6dq/gps.conf:system/etc/gps.conf
 
 #pcscd ,libusb will install with LOCAL_REQUIRED_MODULES instruction
 PRODUCT_PACKAGES += \
