@@ -82,3 +82,5 @@ TARGET_KERNEL_DEFCONF := imx6_qpad_android_defconfig
 #override device key with my own key
 PRODUCT_DEFAULT_DEV_CERTIFICATE := device/fsl/qpad_6dq/security/releasekey
 
+TARGET_FORCE_ADB_NONSECURE := 1
+
