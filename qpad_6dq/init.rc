@@ -53,13 +53,17 @@ on boot
     setprop ro.gps.power /sys/class/gpio/gpio64/value
 
 
-    #QR Engine reset:gpio72,trig:gpio94
-    write /sys/class/gpio/export 72
-    write /sys/class/gpio/gpio72/direction "out"
-    write /sys/class/gpio/gpio72/value 1
+    #QR Engine reset:gpio191,trig:gpio94
+    write /sys/class/gpio/export 191
+    write /sys/class/gpio/gpio191/direction "out"
+    write /sys/class/gpio/gpio191/value 1
+    chown root system /sys/class/gpio/gpio191/value
+    chmod 0666 /sys/class/gpio/gpio191/value
     write /sys/class/gpio/export 94
     write /sys/class/gpio/gpio94/direction "out"
     write /sys/class/gpio/gpio94/value 1
+    chown root system /sys/class/gpio/gpio94/value
+    chmod 0666 /sys/class/gpio/gpio94/value
 
 
     # Enable Tethering in the Settings
