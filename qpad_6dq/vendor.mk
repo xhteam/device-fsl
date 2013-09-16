@@ -29,7 +29,9 @@ PRODUCT_PACKAGES += \
 	Info.plist \
 	libpcsclite \
 	pcscd \
-	reader.conf
+	reader.conf \
+	TFIDemo \
+	libscard
 
 #Wireless
 PRODUCT_PACKAGES += \
