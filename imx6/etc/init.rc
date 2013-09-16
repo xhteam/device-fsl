@@ -386,7 +386,7 @@ on boot
     setprop system_init.startsurfaceflinger 0
 
 #  Enable adb security for JB4.2.2
-    setprop ro.adb.secure 1
+    setprop ro.adb.secure 0
 
 # set this to not let jni check crash, just warnning message.
     setprop dalvik.vm.jniopts warnonly
