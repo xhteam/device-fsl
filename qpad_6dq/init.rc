@@ -26,7 +26,8 @@ on fs
 
 
 on post-fs    
-    insmod /system/lib/modules/cfg80211.ko
+	#
+    #insmod /system/lib/modules/cfg80211.ko
 
 on post-fs-data
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -47,7 +48,8 @@ on boot
     write /sys/class/gpio/export 64
     write /sys/class/gpio/gpio64/direction "out"
     write /sys/class/gpio/gpio64/value 0
-    write /sys/class/gpio/export 82
+    chown root system /sys/class/gpio/gpio64/value
+    chmod 0664 /sys/class/gpio/gpio64/value
     setprop ro.gps.power /sys/class/gpio/gpio64/value
 
 
