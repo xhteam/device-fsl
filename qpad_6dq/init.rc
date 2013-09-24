@@ -64,6 +64,10 @@ on boot
     write /sys/class/gpio/gpio94/value 1
     chown root system /sys/class/gpio/gpio94/value
     chmod 0666 /sys/class/gpio/gpio94/value
+    chmod 0666 /dev/ttymxc1
+
+    #Infrared serial port
+    chmod 0666 /dev/ttymxc3
 
 
     # Enable Tethering in the Settings
