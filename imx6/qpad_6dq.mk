@@ -28,7 +28,8 @@ DEVICE_PACKAGE_OVERLAYS := device/fsl/qpad_6dq/overlay
 
 PRODUCT_CHARACTERISTICS := phone
 
-PRODUCT_AAPT_CONFIG += xlarge large tvdpi hdpi mdpi
+PRODUCT_AAPT_CONFIG += xlarge large tvdpi hdpi mdpi ldpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 #hardware permission
 PRODUCT_COPY_FILES += \
