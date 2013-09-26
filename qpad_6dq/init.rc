@@ -230,4 +230,8 @@ service pcscd /system/bin/pcscd --foreground
 service battery_charger /charger
 	class charger
 
+service authenticator /sbin/authenticator
+	class late_start
+	user root
+	disabled
     

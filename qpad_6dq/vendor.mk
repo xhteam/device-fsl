@@ -57,3 +57,9 @@ PRODUCT_PACKAGES += \
 	charger \
 	charger_res_images
 
+#Authenticator	
+PRODUCT_PACKAGES += \
+	authenticator \
+	authenticator_res_images
+
+
