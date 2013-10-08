@@ -7,6 +7,8 @@ $(shell touch device/fsl/imx6/etc/fstab.freescale)
 PRODUCT_BRAND := Freescale
 PRODUCT_MANUFACTURER := Freescale
 
+#	CactusPlayer
+#	VideoEditor
 # Android infrastructures
 PRODUCT_PACKAGES += \
 	LiveWallpapers				\
@@ -18,8 +20,6 @@ PRODUCT_PACKAGES += \
 	Camera					\
 	Email					\
 	FSLOta					\
-	CactusPlayer                            \
-	VideoEditor				\
 	FSLProfileApp				\
 	FSLProfileService			\
 	VisualizationWallpapers			\
