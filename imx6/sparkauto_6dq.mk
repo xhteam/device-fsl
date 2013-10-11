@@ -59,8 +59,8 @@ PRODUCT_COPY_FILES += \
 	device/fsl/imx6/etc/ppp/options:system/etc/ppp/options \
 	device/fsl/imx6/etc/ppp/ip-up-ppp0:system/etc/ppp/ip-up-ppp0 \
 	device/fsl/imx6/etc/ppp/ip-down-ppp0:system/etc/ppp/ip-down-ppp0 \
-	device/fsl/imx6/etc/init.modem.sh:system/etc/init.modem.sh \
-	device/fsl/imx6/etc/init.pppd.sh:system/etc/init.pppd.sh
+	device/fsl/imx6/etc/ppp/init.modem-rt:system/etc/ppp/init.modem-rt \
+	device/fsl/imx6/etc/ppp/init.pppd-daemon:system/etc/ppp/init.pppd-daemon
 	
 
 #WIFI nvram FIXME?????

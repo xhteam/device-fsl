@@ -306,6 +306,7 @@ PRODUCT_COPY_FILES +=	\
 	device/fsl/common/input/ft5x0x_ts.idc:system/usr/idc/ft5x0x_ts.idc \
 	device/fsl/imx6/etc/init.rc:root/init.rc \
 	device/fsl/imx6/etc/apns-conf.xml:system/etc/apns-conf.xml \
+	device/fsl/imx6/etc/spn-conf.xml:system/etc/spn-conf.xml \
 	device/fsl/imx6/etc/init.usb.rc:root/init.freescale.usb.rc \
 	device/fsl/imx6/etc/ueventd.freescale.rc:root/ueventd.freescale.rc \
 	device/fsl/imx6/etc/ppp/init.gprs-pppd:system/etc/ppp/init.gprs-pppd \

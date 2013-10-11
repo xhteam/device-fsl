@@ -1,6 +1,5 @@
 ro.sf.lcd_density=240
 rild.libpath=/system/lib/libqst_ril.so
-ro.gps.port=/dev/gpsdevice
 
 # Time between scans in seconds. Keep it high to minimize battery drain.
 # This only affects the case in which there are remembered access points,

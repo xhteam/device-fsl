@@ -250,6 +250,10 @@ on post-fs-data
     # the following directory.
     mkdir /data/drm 0770 drm drm
 
+	#for rild
+    mkdir /data/ppp 0771 radio system
+    chown radio system /data/ppp
+
     # If there is no fs-post-data action in the init.<device>.rc file, you
     # must uncomment this line, otherwise encrypted filesystems
     # won't work.
@@ -345,6 +349,10 @@ on boot
     setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
     setprop net.tcp.buffersize.evdo    4094,87380,262144,4096,16384,262144
+
+    chown radio radio /sys/devices/platform/usb_modem/usb_modem
+    chown radio radio /sys/devices/platform/usb_modem/link_state
+    chown radio radio /sys/devices/platform/usb_modem/screen_state
 
 # Define fsl avi/aac/asf/mkv/flv/flac format support
     setprop ro.FSL_AVI_PARSER 1
@@ -630,11 +638,12 @@ service pppd_gprs /etc/ppp/init.gprs-pppd
     disabled
     oneshot
 
-service ppp_daemon /system/bin/init.pppd.sh
+service ppp_daemon /system/etc/ppp/init.pppd-daemon
+	class main
     user root
     group radio cache inet misc
     disabled
-    oneshot    
+    oneshot
 
 service wifi_mac /system/bin/sh /system/etc/check_wifi_mac.sh
     class late_start

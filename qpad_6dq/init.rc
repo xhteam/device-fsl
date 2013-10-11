@@ -216,7 +216,8 @@ service iprenew_eth0 /system/bin/dhcpcd -n
     oneshot   
 
 
-service modem_rt /system/etc/init.modem.sh	
+service modem_rt /system/etc/ppp/init.modem-rt
+	class main
 	disabled	
 	user root	
 	group root radio
