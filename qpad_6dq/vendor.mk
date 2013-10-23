@@ -31,6 +31,7 @@ PRODUCT_PACKAGES += \
 	pcscd \
 	reader.conf \
 	TFIDemo \
+	SCardDemo \
 	libscard
 
 #Wireless
