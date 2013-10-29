@@ -19,14 +19,12 @@ PRODUCT_MODEL := QPAD-MX6DQ
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/fsl/qpad_6dq/bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_MRVL := true
+BOARD_HAVE_BLUETOOTH := false
+BOARD_HAVE_BLUETOOTH_MRVL := false
 MRVL_WIRELESS_DAEMON_API := true
 
 
 #WiFi
-TARGET_KERNEL_MODULES := \
-    kernel_imx/net/wireless/cfg80211.ko:system/lib/modules/cfg80211.ko
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_mrvl8787
@@ -85,4 +83,7 @@ PRODUCT_DEFAULT_DEV_CERTIFICATE := device/fsl/qpad_6dq/security/releasekey
 TARGET_FORCE_ADB_NONSECURE := 1
 
 BOARD_CHARGER_ENABLE_SUSPEND := 1
+
+#override fsl recovery_ui lib
+TARGET_RECOVERY_UI_LIB := librecovery_ui_qpad
 
