@@ -38,7 +38,7 @@ WIFI_DRIVER_MODULE_NAME	:= "sd8xxx"
 #			Bit 0 :  STA
 #			Bit 1 :  uAP
 #			Bit 2 :  WIFIDIRECT
-WIFI_DRIVER_MODULE_ARG  := "drv_mode=5 cfg80211_wext=12 sta_name=wlan uap_name=wlan wfd_name=p2p max_uap_bss=1 fw_name=mrvl/sd8787_uapsta.bin"
+WIFI_DRIVER_MODULE_ARG  := "drv_mode=5 cfg80211_wext=12 sta_name=wlan uap_name=wlan wfd_name=p2p max_vir_bss=1 fw_name=mrvl/sd8787_uapsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/proc/mwlan/config"
 WIFI_DRIVER_FW_PATH_STA := "drv_mode=5"
 WIFI_DRIVER_FW_PATH_AP :=  "drv_mode=6"
