@@ -22,6 +22,10 @@ PRODUCT_COPY_FILES += \
 	device/fsl/qpad_6dq/audio_policy.conf:system/etc/audio_policy.conf \
 	device/fsl/qpad_6dq/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
+
+PRODUCT_COPY_FILES += \
+	device/fsl/qpad_6dq/splash.img:splash.img
+
 # GPU files
 
 DEVICE_PACKAGE_OVERLAYS := device/fsl/qpad_6dq/overlay
