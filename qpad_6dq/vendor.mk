@@ -38,6 +38,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	mlan.ko \
 	bt8xxx.ko \
+	mbt8xxx.ko \
 	mlan2040coex \
 	mlanconfig \
 	mlanevent \
