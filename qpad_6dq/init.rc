@@ -220,6 +220,8 @@ service modem_rt /system/etc/ppp/init.modem-rt
 
 service pcscd /system/bin/pcscd --foreground
     class main
+    disabled
+    oneshot
 	user root	
 	group root system
 
