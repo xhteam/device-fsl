@@ -9,7 +9,8 @@ PRODUCT_PACKAGES += \
 	gps.freescale
 	
 PRODUCT_COPY_FILES += \
-	device/fsl/qpad_6dq/gps.conf:system/etc/gps.conf
+	device/fsl/qpad_6dq/gps.conf:system/etc/gps.conf \
+	device/generic/apps/PlatformLibrary/com.quester.android.platform_library.xml:system/etc/permissions/com.quester.android.platform_library.xml
 
 #NFC
 PRODUCT_PACKAGES += \
@@ -32,7 +33,9 @@ PRODUCT_PACKAGES += \
 	reader.conf \
 	TFIDemo \
 	SCardDemo \
-	libscard
+	libscard \
+	com.quester.android.platform_library \
+	libplatform_library_pcscd_jni
 
 #Wireless
 PRODUCT_PACKAGES += \
