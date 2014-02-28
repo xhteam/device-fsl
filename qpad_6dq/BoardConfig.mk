@@ -38,7 +38,7 @@ WIFI_DRIVER_MODULE_NAME	:= "sd8xxx"
 #			Bit 0 :  STA
 #			Bit 1 :  uAP
 #			Bit 2 :  WIFIDIRECT
-WIFI_DRIVER_MODULE_ARG  := "drv_mode=5 cfg80211_wext=12 sta_name=wlan uap_name=wlan wfd_name=p2p max_vir_bss=1 fw_name=mrvl/sd8787_uapsta.bin"
+WIFI_DRIVER_MODULE_ARG  := "drv_mode=5 cfg80211_wext=12 sta_name=wlan uap_name=wlan wfd_name=p2p fw_name=mrvl/sd8787_uapsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM := "/proc/mwlan/config"
 WIFI_DRIVER_FW_PATH_STA := "drv_mode=5"
 WIFI_DRIVER_FW_PATH_AP :=  "drv_mode=6"
@@ -63,7 +63,8 @@ TARGET_SELECT_KEY := 28
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
 
-BOARD_KERNEL_CMDLINE := init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.hardware=freescale androidboot.console=tty0
+BOARD_KERNEL_CMDLINE := init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.hardware=freescale maxcpus=2 arm_freq=800 androidboot.console=tty0
+#androidboot.console=tty0
 #console=ttymxc0,115200 androidboot.console=ttymxc0
 
 
