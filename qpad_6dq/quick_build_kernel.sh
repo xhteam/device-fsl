@@ -84,7 +84,7 @@ cp $KERNET_ROOTDIR/arch/arm/boot/uImage $PRODUCT_OUT/uImage
 cp $KERNET_ROOTDIR/arch/arm/boot/zImage $PRODUCT_OUT/kernel
 
 $MKBOOTFS  $PRODUCT_OUT/root | $MINIGZIP > $PRODUCT_OUT/ramdisk.img
-out/host/linux-x86/bin/mkbootimg --kernel $PRODUCT_OUT/kernel --ramdisk $PRODUCT_OUT/ramdisk.img --cmdline "console=ttymxc0,115200 init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale" --output $PRODUCT_OUT/boot.img
+out/host/linux-x86/bin/mkbootimg --kernel $PRODUCT_OUT/kernel --ramdisk $PRODUCT_OUT/ramdisk.img --cmdline "console=ttymxc0,115200 init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale maxcpus=2 arm_freq=800" --output $PRODUCT_OUT/boot.img
 
 echo "Build $PRODUCT_OUT/boot.img Done"
 exit 0
