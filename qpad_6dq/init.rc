@@ -174,7 +174,7 @@ service magd /system/bin/magd
 service mwirelessd /system/bin/MarvellWirelessDaemon
 	class main
 	user root
-	groupt root system
+	group root system
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL -f/system/etc/dhcpcd/dhcpcd.conf
     class main
