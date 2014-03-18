@@ -32,7 +32,6 @@ PRODUCT_PACKAGES += \
 	pcscd \
 	reader.conf \
 	TFIDemo \
-	SCardDemo \
 	libscard \
 	com.quester.android.platform_library \
 	libplatform_library_pcscd_jni
