@@ -35,4 +35,4 @@ PRODUCT_MAKEFILES := \
   $(LOCAL_DIR)/hdmidongle_6dq.mk \
   $(LOCAL_DIR)/sparkauto_6dq.mk \
   $(LOCAL_DIR)/qpad_6dq.mk \
-  
+  $(LOCAL_DIR)/tdh.mk
