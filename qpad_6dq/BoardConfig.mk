@@ -63,8 +63,8 @@ TARGET_SELECT_KEY := 28
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
 
-BOARD_KERNEL_CMDLINE := init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.hardware=freescale maxcpus=2 arm_freq=800 androidboot.console=tty0
-#androidboot.console=tty0
+BOARD_KERNEL_CMDLINE := init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.hardware=freescale maxcpus=2 console=ttymxc0,115200 androidboot.console=ttymxc0
+#androidboot.console=tty0 arm_freq=800
 #console=ttymxc0,115200 androidboot.console=ttymxc0
 
 
@@ -80,7 +80,7 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 #
 #BOOTLOADER and Linux Kernel configuration
 #
-TARGET_BOOTLOADER_CONFIG := 6q:mx6q_qpad_android_config 
+TARGET_BOOTLOADER_CONFIG := 6q:mx6q_qpad_android_config 6dl:mx6dl_qpad_android_config
 TARGET_KERNEL_DEFCONF := imx6_qpad_android_defconfig
 
 #override device key with my own key
@@ -93,3 +93,14 @@ BOARD_CHARGER_ENABLE_SUSPEND := 1
 #override fsl recovery_ui lib
 TARGET_RECOVERY_UI_LIB := librecovery_ui_qpad
 
+# Toming: Added to display TX
+#         info on `About' page
+PRODUCT_BUILD_PROP_OVERRIDES += \
+			PRODUCT_BRAND=ePolice \
+			PRODUCT_NAME=Kongming \
+			PRODUCT_MODEL=tx51 \
+			TARGET_DEVICE=tx51 \
+			PRODUCT_MANUFACTURER=QuesTech \
+			BUILD_DISPLAY_ID="tx51-$(TARGET_BUILD_VARIANT) $(PLATFORM_VERSION) $(BUILD_ID) $(BUILD_NUMBER) test-keys" \
+			BUILD_FINGERPRINT="QuesTech/tx51/$(TARGET_BOARD_PLATFORM):$(PLATFORM_VERSION)/$(BUILD_ID)/tx51s1:$(TARGET_BUILD_VARIANT)/release-keys" \
+			PRIVATE_BUILD_DESC="tx51-$(TARGET_BUILD_VARIANT) $(PLATFORM_VERSION) $(BUILD_ID) tx51s1 release-keys"
