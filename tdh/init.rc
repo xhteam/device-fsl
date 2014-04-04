@@ -226,11 +226,3 @@ service pcscd /system/bin/pcscd --foreground
 	user root	
 	group root system
 
-service battery_charger /charger
-	class charger
-	user root
-
-service authenticator /sbin/authenticator
-	class late_start
-	user root
-    
