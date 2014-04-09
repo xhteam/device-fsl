@@ -14,7 +14,7 @@ include device/fsl/imx6/imx6_target_fs.mk
 
 PREBUILT_3G_MODEM_RIL			:= true
 
-TARGET_BOOTLOADER_BOARD_NAME := qpad
+TARGET_BOOTLOADER_BOARD_NAME := tdh
 PRODUCT_MODEL := QPAD-MX6DQ
 
 # Bluetooth
@@ -63,9 +63,7 @@ TARGET_SELECT_KEY := 28
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
 
-BOARD_KERNEL_CMDLINE := init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.hardware=freescale maxcpus=2 arm_freq=800 androidboot.console=tty0
-#androidboot.console=tty0
-#console=ttymxc0,115200 androidboot.console=ttymxc0
+BOARD_KERNEL_CMDLINE := init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.hardware=freescale maxcpus=2 arm_freq=800 console=ttymxc0,115200 androidboot.console=ttymxc0
 
 
 USE_ION_ALLOCATOR := false
@@ -80,8 +78,8 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 #
 #BOOTLOADER and Linux Kernel configuration
 #
-TARGET_BOOTLOADER_CONFIG := 6q:mx6q_qpad_android_config 
-TARGET_KERNEL_DEFCONF := imx6_qpad_android_defconfig
+TARGET_BOOTLOADER_CONFIG := 6q:mx6q_tdh_android_config 6dl:mx6dl_tdh_android_config
+TARGET_KERNEL_DEFCONF := imx6_tdh_android_defconfig
 
 #override device key with my own key
 PRODUCT_DEFAULT_DEV_CERTIFICATE := device/fsl/tdh/security/releasekey

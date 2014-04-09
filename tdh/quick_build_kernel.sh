@@ -26,7 +26,7 @@ fi
 
 
 #{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{
-KERNEL_DEFCONFIG=imx6_qpad_android_defconfig
+KERNEL_DEFCONFIG=imx6_tdh_android_defconfig
 KERNET_ROOTDIR=kernel_imx
 PROJECT_NAME=tdh
 #}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
