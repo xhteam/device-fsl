@@ -1,5 +1,3 @@
-
-
 #RIL library
 PRODUCT_PACKAGES += \
 	libqst_ril
@@ -11,29 +9,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	device/fsl/tdh/gps.conf:system/etc/gps.conf 
 
-#NFC
-PRODUCT_PACKAGES += \
-	libnfc_ndef \
-	libnfc \
-	libnfc_jni \
-	Nfc \
-	libpn544_fw \
-	nfc.freescale
 
-
-
-#pcscd ,libusb will install with LOCAL_REQUIRED_MODULES instruction
-PRODUCT_PACKAGES += \
-	libccidtwin \
-	libccid \
-	Info.plist \
-	libpcsclite \
-	pcscd \
-	reader.conf \
-	TFIDemo \
-	libscard \
-	com.quester.android.platform_library \
-	libplatform_library_pcscd_jni
 
 #Wireless
 PRODUCT_PACKAGES += \
