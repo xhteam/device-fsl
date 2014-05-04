@@ -11,10 +11,13 @@
 function usage () {
 	echo "Usage:"
 	echo "   Pelease run the script in android top directory"
-	echo "   device/fsl/qpad_6dq/quick_build_kernel.sh bootimage [kernel config]     --> build boot.img"
-	echo "   device/fsl/qpad_6dq/quick_build_kernel.sh recoveryimage [kernel config]  --> recovery.img"
-	echo "   device/fsl/qpad_6dq/quick_build_kernel.sh menuconfig                    --> open kernel menuconfig"
-#	echo "   device/fsl/qpad_6dq/quick_build_kernel.sh saveconfig                    --> make savedefconfig"
+	echo "   $0 bootimage [kernel config]     --> build boot.img"
+	echo "   $0 recoveryimage [kernel config]  --> recovery.img"
+	echo "   $0 menuconfig                    --> open kernel menuconfig"
+#	echo "   $0 saveconfig                    --> make savedefconfig"
+	echo "   $0 blmx6dq                       -->build bootloader for MX6DQ"
+	echo "   $0 blmx6dl                       -->build bootloader for MX6DL"	
+	echo "   $0 bootloader                   -->build bootloader for MX6DQ and MX6DL"
 }
 
 if [ $# -lt 1 ]; then
@@ -23,7 +26,17 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
+if [ -z "$ANDROID_BUILD_TOP" ]; then
+    echo 
+    echo "Couldn't locate the top of the tree.  Please run script in android environment." >&2
+    echo 
+    exit 1
+fi
 
+
+BOOTLOADER_CONFIG_MX6DQ=mx6q_qpad_android_config
+BOOTLOADER_CONFIG_MX6DL=mx6dl_qpad_android_config
+BOOTLOADER_ROOTDIR=bootable/bootloader/uboot-imx/
 
 #{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{
 KERNEL_DEFCONFIG=imx6_qpad_android_defconfig
@@ -38,6 +51,9 @@ NEW_KERNEL_CONFIG=
 
 MKBOOTFS=$ANDROID_BUILD_TOP/out/host/linux-x86/bin/mkbootfs
 MINIGZIP=$ANDROID_BUILD_TOP/out/host/linux-x86/bin/minigzip
+
+BOOTLOADER_CROSS_TOOLCHAIN=$ANDROID_BUILD_TOP/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi-
+
 ############################## bootimage ####################################
 if [ $1 = bootimage ]; then
 
@@ -158,6 +174,37 @@ if [ $1 = saveconfig -o $1 = savedefconfig ]; then
 	echo "config saved to $KERNEL_OUT/defconfig"
 	exit 0
 fi
+
+if [ $1 = blmx6dq ]; then
+		make -C $BOOTLOADER_ROOTDIR distclean ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR $BOOTLOADER_CONFIG_MX6DQ ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot-6q.bin
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot.bin
+	exit 0
+fi
+if [ $1 = blmx6dl ]; then
+		make -C $BOOTLOADER_ROOTDIR distclean ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR $BOOTLOADER_CONFIG_MX6DL ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot-6dl.bin
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot.bin
+	exit 0
+fi
+if [ $1 = bootloader ]; then
+		make -C $BOOTLOADER_ROOTDIR distclean ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR $BOOTLOADER_CONFIG_MX6DL ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot-6dl.bin
+		make -C $BOOTLOADER_ROOTDIR distclean ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR $BOOTLOADER_CONFIG_MX6DQ ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot-6q.bin
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot.bin
+	exit 0
+fi
+
+
 
 echo "Error: unrecognized  argument"
 usage
