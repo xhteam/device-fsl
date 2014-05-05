@@ -31,3 +31,7 @@ PRODUCT_PACKAGES += \
 	magd \
 	sensors.imx6
 
+#environment tools
+PRODUCT_PACKAGES += \
+	envtool
+

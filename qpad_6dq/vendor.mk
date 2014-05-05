@@ -66,4 +66,6 @@ PRODUCT_PACKAGES += \
 	authenticator \
 	authenticator_res_images
 
-
+#environment tools
+PRODUCT_PACKAGES += \
+	envtool
