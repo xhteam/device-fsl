@@ -18,6 +18,7 @@ function usage () {
 	echo "   $0 blmx6dq                       -->build bootloader for MX6DQ"
 	echo "   $0 blmx6dl                       -->build bootloader for MX6DL"	
 	echo "   $0 bootloader                   -->build bootloader for MX6DQ and MX6DL"
+	echo "   $0 mfg	                       -->build mfg bootloader"	
 }
 
 if [ $# -lt 1 ]; then
@@ -33,7 +34,7 @@ if [ -z "$ANDROID_BUILD_TOP" ]; then
     exit 1
 fi
 
-
+BOOTLOADER_CONFIG_MFG=mx6q_tdh_mfg_config
 BOOTLOADER_CONFIG_MX6DQ=mx6q_tdh_android_config
 BOOTLOADER_CONFIG_MX6DL=mx6dl_tdh_android_config
 BOOTLOADER_ROOTDIR=bootable/bootloader/uboot-imx/
@@ -172,6 +173,15 @@ if [ $1 = saveconfig -o $1 = savedefconfig ]; then
 	make -C $KERNET_ROOTDIR O=../$KERNEL_OUT ARCH=arm CROSS_COMPILE=$ANDROID_BUILD_TOP/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi- savedefconfig
 
 	echo "config saved to $KERNEL_OUT/defconfig"
+	exit 0
+fi
+
+if [ $1 = mfg ]; then
+		make -C $BOOTLOADER_ROOTDIR distclean ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR $BOOTLOADER_CONFIG_MFG ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		make -C $BOOTLOADER_ROOTDIR ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot-6q.bin
+		cp $BOOTLOADER_ROOTDIR/u-boot.bin $PRODUCT_OUT/u-boot.bin
 	exit 0
 fi
 
