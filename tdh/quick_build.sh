@@ -18,7 +18,7 @@ function usage () {
 	echo "   $0 blmx6dq                       -->build bootloader for MX6DQ"
 	echo "   $0 blmx6dl                       -->build bootloader for MX6DL"	
 	echo "   $0 bootloader                   -->build bootloader for MX6DQ and MX6DL"
-	echo "   $0 mfg	                       -->build mfg bootloader"	
+	echo "   $0 mfg	                       -->build mfg"	
 }
 
 if [ $# -lt 1 ]; then
@@ -34,7 +34,7 @@ if [ -z "$ANDROID_BUILD_TOP" ]; then
     exit 1
 fi
 
-BOOTLOADER_CONFIG_MFG=mx6q_tdh_mfg_config
+BOOTLOADER_CONFIG_MFG=mx6dl_tdh_mfg_config
 BOOTLOADER_CONFIG_MX6DQ=mx6q_tdh_android_config
 BOOTLOADER_CONFIG_MX6DL=mx6dl_tdh_android_config
 BOOTLOADER_ROOTDIR=bootable/bootloader/uboot-imx/
@@ -101,7 +101,7 @@ cp $KERNET_ROOTDIR/arch/arm/boot/uImage $PRODUCT_OUT/uImage
 cp $KERNET_ROOTDIR/arch/arm/boot/zImage $PRODUCT_OUT/kernel
 
 $MKBOOTFS  $PRODUCT_OUT/root | $MINIGZIP > $PRODUCT_OUT/ramdisk.img
-out/host/linux-x86/bin/mkbootimg --kernel $PRODUCT_OUT/kernel --ramdisk $PRODUCT_OUT/ramdisk.img --cmdline "console=ttymxc0,115200 init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale maxcpus=2 arm_freq=800" --output $PRODUCT_OUT/boot.img
+out/host/linux-x86/bin/mkbootimg --kernel $PRODUCT_OUT/kernel --ramdisk $PRODUCT_OUT/ramdisk.img --cmdline "console=ttymxc0,115200 init=/init video=mxcfb0:dev=mipi_dsi video=mxcfb1:off video=mxcfb2:off fbmem=10M fb0base=0x27b00000 vmalloc=400M androidboot.console=ttymxc0 androidboot.hardware=freescale " --output $PRODUCT_OUT/boot.img
 
 echo "Build $PRODUCT_OUT/boot.img Done"
 exit 0
@@ -177,6 +177,9 @@ if [ $1 = saveconfig -o $1 = savedefconfig ]; then
 fi
 
 if [ $1 = mfg ]; then
+		make -C $KERNET_ROOTDIR ARCH=arm CROSS_COMPILE=$ANDROID_BUILD_TOP/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi- imx6_updater_defconfig
+		make -C $KERNET_ROOTDIR ARCH=arm CROSS_COMPILE=$ANDROID_BUILD_TOP/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi- uImage
+		cp $KERNET_ROOTDIR/arch/arm/boot/uImage $PRODUCT_OUT/uImage
 		make -C $BOOTLOADER_ROOTDIR distclean ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
 		make -C $BOOTLOADER_ROOTDIR $BOOTLOADER_CONFIG_MFG ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
 		make -C $BOOTLOADER_ROOTDIR ARCH=arm CROSS_COMPILE=$BOOTLOADER_CROSS_TOOLCHAIN
