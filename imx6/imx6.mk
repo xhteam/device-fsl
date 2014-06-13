@@ -304,6 +304,7 @@ PRODUCT_COPY_FILES +=	\
 	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/HannStar_P1003_Touchscreen.idc \
 	device/fsl/common/input/eGalax_Touch_Screen.idc:system/usr/idc/Novatek_NT11003_Touch_Screen.idc \
 	device/fsl/common/input/ft5x0x_ts.idc:system/usr/idc/ft5x0x_ts.idc \
+	device/fsl/common/input/currency_tp.idc:system/usr/idc/currency_tp.idc \
 	device/fsl/imx6/etc/init.rc:root/init.rc \
 	device/fsl/imx6/etc/apns-conf.xml:system/etc/apns-conf.xml \
 	device/fsl/imx6/etc/spn-conf.xml:system/etc/spn-conf.xml \
