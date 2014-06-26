@@ -259,5 +259,7 @@
         <item>com.android.location.fused</item>
     </string-array>
 
+    <!-- If this is true, the screen will fade off. -->
+    <bool name="config_animateScreenLights">false</bool>
 
 </resources>
